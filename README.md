@@ -4,6 +4,7 @@ This plugin is inspired by https://www.nativescript.org/blog/tinder-style-cards-
 # Usage
 ## Android
 ### Typescript
+```
 import * as observable from 'tns-core-modules/data/observable';
 import * as pages from 'tns-core-modules/ui/page';
 import {HelloWorldModel} from './main-view-model';
@@ -26,8 +27,9 @@ export function pageLoaded(args: observable.EventData) {
         }
     });
 }
-
+```
 ### XML
+```
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
       xmlns:customControls="nativescript-swipe-card"
       loaded="pageLoaded" class="page">
@@ -35,3 +37,4 @@ export function pageLoaded(args: observable.EventData) {
         <customControls:SwipeCard id="swipe" items="{{ items }}"/>
   </StackLayout>
 </Page>
+```
