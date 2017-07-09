@@ -1,13 +1,9 @@
 import { Common, SwipeCardBase, itemsProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
-// import { SwipeGestureEventData, GesturesObserver, GestureTypes } from "ui/gestures";
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
-// import absoluteLayout = require("ui/layouts/absolute-layout");
-// import  gridLayout = require("ui/layouts/grid-layout");
 import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
 import {Label} from "tns-core-modules/ui/label";
 import {Button} from "tns-core-modules/ui/button";
-// import {Observable} from "data/observable";
 import { Color } from "color/color";
 import { screen } from "tns-core-modules/platform";
 
@@ -77,8 +73,11 @@ export class SwipeEvent {
             }
     }
 
-    handleSwipe(key: any) {
+    handleSwipe(key: any) {       
             this.i--;
+            let prevDeltaX:number =0;
+            let prevDeltaY:number =0;
+
             let stack = new StackLayout();
             let Label1 = new Label();
             let Label2 = new Label();
@@ -105,59 +104,67 @@ export class SwipeEvent {
             this.addChild(stack);
             //make card swipable
             let that = new WeakRef(this);
-        stack.on(GestureTypes.swipe, (args: SwipeGestureEventData) => {
+        
+        stack.on(GestureTypes.pan, (args: PanGestureEventData) => {
+            if (args.state === 1) // down
+            {
+                prevDeltaX = 0;
+                prevDeltaY = 0;
+            }
+            else if (args.state === 2) { // currently paning
+                stack.translateX += args.deltaX - prevDeltaX;
+                stack.translateY += args.deltaY - prevDeltaY;
+                prevDeltaX = args.deltaX;
+                prevDeltaY = args.deltaY;
+            } 
+            else if (args.state === 3) // up
+            {
 
-           let eventData:SwipeEvent = {
+                let currLocationX = stack.getLocationOnScreen().x;
+                let isToLeft:boolean;
+                let swipeX:number;                
+                if (currLocationX<0) {
+                    currLocationX = currLocationX*(-1);
+                    isToLeft = true;
+                }
+                let shiftX = <number>stack.width - currLocationX;
+                let movPerc = shiftX/<number>stack.width;
+                if (movPerc < 0.5)  {
+                    let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,
                         object: this,
-                        direction:args.direction
+                        direction:isToLeft?2:1
                     }
-               this.notify(eventData);
+                    if (isToLeft) {
+                        swipeX = -2000;
+                        this.notify(eventData);
+                        
+                    }
+                    else {
+                        swipeX = 2000;
+                        this.notify(eventData);
+                    }
+                    stack.animate({
+                        translate: {
+                            x:swipeX,
+                            y:0
+                        },
+                        duration: 500            
+                    });
 
-            let originalPos = that.get().getLocationOnScreen();
-            let width = that.get().getMeasuredWidth(), height = that.get().getMeasuredHeight();
-            let xSwipe = originalPos.x, ySwipe = originalPos.y;
-            switch (args.direction) {
-                case SwipeDirection.down:
-                    // ySwipe = screen.mainScreen.heightDIPs + height;
-                    ySwipe = 100;
-                    break;
-                case SwipeDirection.up:
-                    // ySwipe = - height;
-                    ySwipe = -100;
-                    break;
-                case SwipeDirection.left:
-                    // xSwipe = - width;
-                    xSwipe = -1000;
-                    break;
-                case SwipeDirection.right:
-                    // xSwipe = screen.mainScreen.widthDIPs + width;
-                    xSwipe = 2000;
-                    break;
+
+                } else {
+                    stack.animate({
+                        translate: {
+                            x:0,
+                            y:0
+                        },
+                        duration: 500
+                    });
+                }
+
             }
-            stack.animate({
-                translate: {
-                    // x: xSwipe,
-                    // y: ySwipe
-                    x:xSwipe,
-                    y:ySwipe
-                },
-                duration: 500
-            // }).then(() => {
-            //     stack.animate({
-            //         translate: {
-            //             x: 0, 
-            //             y: -2000
-            //             // x: originalPos.x,
-            //             // y: originalPos.y
-            //         }
-            //     });
-            });
-
         });
-
-
-                
     }  
  }
 
