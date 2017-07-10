@@ -61,6 +61,12 @@ export function pageLoaded(args: observable.EventData) {
 | --- | --- | --- | --- |
 | `swipeEvent` | `function` | `null` | Callback called when the layout is swiped to the right or left and the swipe animation is done. |
 
+### Methods
+
+| Method | Return | Description |
+| --- | --- | --- | --- |
+| `items` | `Array<any>` | Array of card's stack, in which we can define the content of each card. |
+
 
 ## NativeBaguette 🥖
 
