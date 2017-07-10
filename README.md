@@ -5,7 +5,7 @@ This plugin is inspired by https://www.nativescript.org/blog/tinder-style-cards-
 
 Tender cards, allow you to drag them, and detect swipe events. 
 
-Developed with :heart: by the team NativeBaguette 🥖
+Developed with :heart: by the team [NativeBaguette 🥖](https://www.nativescript.org/blog/meet-the-nativescript-ambassadors)
 
 ## Installation
 
