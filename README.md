@@ -64,7 +64,7 @@ export function pageLoaded(args: observable.EventData) {
 ### Methods
 
 | Method | Return | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `items` | `Array<any>` | Array of card's stack, in which we can define the content of each card. |
 
 
