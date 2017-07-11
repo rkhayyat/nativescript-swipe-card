@@ -1,5 +1,5 @@
 import { Common, SwipeCardBase } from './swipe-card.common';
-import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
+import { Layout } from "tns-core-modules/ui/layouts/layout";
 export declare class Myplugin extends Common {
     constructor();
 }
@@ -10,9 +10,9 @@ export declare class SwipeEvent {
 }
 export declare class SwipeCard extends SwipeCardBase {
     static swipeEvent: string;
-    cards: StackLayout[];
+    cards: Layout[];
     i: number;
     constructor();
     createItems(items: any): void;
-    handleSwipe(key: any, stack: StackLayout): void;
+    handleSwipe(key: any, stack: Layout): void;
 }

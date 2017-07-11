@@ -1,6 +1,7 @@
 import { Common, SwipeCardBase, itemsProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
+import {Layout} from "tns-core-modules/ui/layouts/layout";
 import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
 import { Color } from "color/color";
 import { screen } from "tns-core-modules/platform";
@@ -50,10 +51,10 @@ export class SwipeEvent {
 
  export class SwipeCard extends SwipeCardBase {
    public static swipeEvent:string = 'swipeEvent';
-   public cards: StackLayout[];
+   public cards: Layout[];
    i: number = 0;
-   [itemsProperty.setNative](value: StackLayout[]) {       
-        let items: StackLayout[] = value;
+   [itemsProperty.setNative](value: Layout[]) {       
+        let items: Layout[] = value;
         this.cards = items;
         this.createItems(items);
     }
@@ -70,7 +71,7 @@ export class SwipeEvent {
             }
     }
 
-    handleSwipe(key: any, stack:StackLayout) {       
+    handleSwipe(key: any, stack:Layout) {       
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
