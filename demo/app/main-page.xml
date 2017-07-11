@@ -2,7 +2,7 @@
       xmlns:customControls="nativescript-swipe-card"
       loaded="pageLoaded" class="page">
     <StackLayout>
-        <customControls:SwipeCard id="swipe" items="{{ items }}"/>
+        <customControls:SwipeCard id="swipe" items="{{ stackItems }}"/>
               
           <StackLayout>
                   <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>

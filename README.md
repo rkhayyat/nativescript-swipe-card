@@ -65,7 +65,7 @@ export function pageLoaded(args: observable.EventData) {
 
 | Method | Return | Description |
 | --- | --- | --- |
-| `items` | `Array<any>` | Array of card's stack, in which we can define the content of each card. |
+| `items` | `Array<StackLayout>` | Array of card's stack, in which we can define the content of each card. |
 
 
 ## NativeBaguette 🥖

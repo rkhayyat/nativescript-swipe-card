@@ -2,8 +2,6 @@ import { Common, SwipeCardBase, itemsProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
 import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
-import {Label} from "tns-core-modules/ui/label";
-import {Button} from "tns-core-modules/ui/button";
 import { Color } from "color/color";
 import { screen } from "tns-core-modules/platform";
 
@@ -52,10 +50,10 @@ export class SwipeEvent {
 
  export class SwipeCard extends SwipeCardBase {
    public static swipeEvent:string = 'swipeEvent';
-   public cards: Number[];
+   public cards: StackLayout[];
    i: number = 0;
-   [itemsProperty.setNative](value: Number[]) {       
-        let items: Number[] = value;
+   [itemsProperty.setNative](value: StackLayout[]) {       
+        let items: StackLayout[] = value;
         this.cards = items;
         this.createItems(items);
     }
@@ -67,29 +65,29 @@ export class SwipeEvent {
     createItems(items){
             this.horizontalAlignment="center"; 
             this.paddingTop =30;
-            console.log(this.cards);
+            // console.log(this.cards);
             for (var key in this.cards) {
-                     this.handleSwipe(key);
+                     this.handleSwipe(key,this.cards[key]);
             }
     }
 
-    handleSwipe(key: any) {       
+    handleSwipe(key: any, stack:StackLayout) {       
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
 
-            let stack = new StackLayout();
-            let Label1 = new Label();
-            let Label2 = new Label();
+            // let stack = new StackLayout();
+            // let Label1 = new Label();
+            // let Label2 = new Label();
             //set the Labels on the card
-            Label1.text = "The Swipable Card plugin";
-            Label1.textWrap=true;
-            Label2.text = "Welcome to {N} we present you";
-            Label2.textWrap=true;
+            // Label1.text = "The Swipable Card plugin";
+            // Label1.textWrap=true;
+            // Label2.text = "Welcome to {N} we present you";
+            // Label2.textWrap=true;
 
             //android specific
-            Label1.textAlignment = "center";
-            Label2.textAlignment = "center";
+            // Label1.textAlignment = "center";
+            // Label2.textAlignment = "center";
             stack.backgroundColor = new Color(randomColor());
             stack.margin = 2;
             stack.verticalAlignment = "middle";
@@ -99,8 +97,8 @@ export class SwipeEvent {
             stack.width =  width;
             stack.id = 'card' + Number(key);
             stack.marginTop = this.i;
-            stack.addChild(Label2);
-            stack.addChild(Label1);
+            // stack.addChild(Label2);
+            // stack.addChild(Label1);
             this.addChild(stack);
             //make card swipable
             let that = new WeakRef(this);
