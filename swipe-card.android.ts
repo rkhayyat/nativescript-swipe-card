@@ -51,11 +51,11 @@ export class SwipeEvent {
 
  export class SwipeCard extends SwipeCardBase {
    public static swipeEvent:string = 'swipeEvent';
-   public cards: Layout[];
+//    public cards: Layout[];
    i: number = 0;
    [itemsProperty.setNative](value: Layout[]) {       
         let items: Layout[] = value;
-        this.cards = items;
+        // this.cards = items;
         this.createItems(items);
     }
 
@@ -66,51 +66,51 @@ export class SwipeEvent {
     createItems(items){
             this.horizontalAlignment="center"; 
             this.paddingTop =30;
-            for (var key in this.cards) {
-                     this.handleSwipe(key,this.cards[key]);
+            for (var key in items) {
+                     this.handleSwipe(key,items[key]);
             }
     }
 
-    handleSwipe(key: any, stack:Layout) {       
+    handleSwipe(key: any, layout:Layout) {       
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
-            stack.backgroundColor = new Color(randomColor());
-            stack.margin = 2;
-            stack.verticalAlignment = "middle";
-            stack.color = new Color("#000000");
+            layout.backgroundColor = new Color(randomColor());
+            layout.margin = 2;
+            layout.verticalAlignment = "middle";
+            layout.color = new Color("#000000");
             let width = screen.mainScreen.widthDIPs, height = screen.mainScreen.heightDIPs;
-            stack.height =  height/2;
-            stack.width =  width;
-            stack.id = 'card' + Number(key);
-            stack.marginTop = this.i;
-            this.addChild(stack);
+            layout.height =  height/2;
+            layout.width =  width;
+            layout.id = 'card' + Number(key);
+            layout.marginTop = this.i;
+            this.addChild(layout);
             //make card swipable
             let that = new WeakRef(this);
         
-        stack.on(GestureTypes.pan, (args: PanGestureEventData) => {
+        layout.on(GestureTypes.pan, (args: PanGestureEventData) => {
             if (args.state === 1) // down
             {
                 prevDeltaX = 0;
                 prevDeltaY = 0;
             }
             else if (args.state === 2) { // currently paning
-                stack.translateX += args.deltaX - prevDeltaX;
-                stack.translateY += args.deltaY - prevDeltaY;
+                layout.translateX += args.deltaX - prevDeltaX;
+                layout.translateY += args.deltaY - prevDeltaY;
                 prevDeltaX = args.deltaX;
                 prevDeltaY = args.deltaY;
             } 
             else if (args.state === 3) // up
             {
-                let currLocationX = stack.getLocationOnScreen().x;
+                let currLocationX = layout.getLocationOnScreen().x;
                 let isToLeft:boolean;
                 let swipeX:number;                
                 if (currLocationX<0) {
                     currLocationX = currLocationX*(-1);
                     isToLeft = true;
                 }
-                let shiftX = <number>stack.width - currLocationX;
-                let movPerc = shiftX/<number>stack.width;
+                let shiftX = <number>layout.width - currLocationX;
+                let movPerc = shiftX/<number>layout.width;
                 if (movPerc < 0.5)  {
                     let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,
@@ -126,7 +126,7 @@ export class SwipeEvent {
                         swipeX = 2000;
                         this.notify(eventData);
                     }
-                    stack.animate({
+                    layout.animate({
                         translate: {
                             x:swipeX,
                             y:0
@@ -136,7 +136,7 @@ export class SwipeEvent {
 
 
                 } else {
-                    stack.animate({
+                    layout.animate({
                         translate: {
                             x:0,
                             y:0

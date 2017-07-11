@@ -38,6 +38,8 @@ export class HelloWorldModel extends Observable {
     var secondRow = new ItemSpec(1, "auto");
     Grid.addRow(firstRow);
     Grid.addRow(secondRow);
+    GridLayout.setRow(Label1,0);
+    GridLayout.setRow(Label2,1);
 
 
     let stack2 = new StackLayout();
