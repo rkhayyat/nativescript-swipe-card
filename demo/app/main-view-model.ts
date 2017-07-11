@@ -21,15 +21,12 @@ export class HelloWorldModel extends Observable {
     let stack1 = new StackLayout();
     let Label1 = new Label();
     let Label2 = new Label();
-    //set the Labels on the card
     Label1.text = "The Swipable Card plugin";
     Label1.textWrap=true;
     Label2.text = "Welcome to {N} we present you";
     Label2.textWrap=true;
-    //android specific
     Label1.textAlignment = "center";
     Label2.textAlignment = "center";
-    stack1.margin = 2;
     stack1.verticalAlignment = "middle";
     stack1.addChild(Label2);
     stack1.addChild(Label1);
@@ -41,8 +38,6 @@ export class HelloWorldModel extends Observable {
     image.src="~/images/apple.jpg"
     image.height=100;
     image.width=100;
-    //set the Labels on the card
-    stack2.margin = 2;
     stack2.verticalAlignment = "middle";
     stack2.addChild(image);
     
@@ -51,13 +46,11 @@ export class HelloWorldModel extends Observable {
     let button = new Button();
     button.text="Click me!";
     button.width=100;
-    //set the Labels on the card
-    
-    //android specific
     button.textAlignment = "center";
-    stack3.margin = 2;
     stack3.verticalAlignment = "middle";
     stack3.addChild(button);
+
+    
     this.stackItems = [stack3,stack2,stack1];
 
             

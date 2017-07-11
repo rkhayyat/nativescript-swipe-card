@@ -65,7 +65,6 @@ export class SwipeEvent {
     createItems(items){
             this.horizontalAlignment="center"; 
             this.paddingTop =30;
-            // console.log(this.cards);
             for (var key in this.cards) {
                      this.handleSwipe(key,this.cards[key]);
             }
@@ -75,19 +74,6 @@ export class SwipeEvent {
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
-
-            // let stack = new StackLayout();
-            // let Label1 = new Label();
-            // let Label2 = new Label();
-            //set the Labels on the card
-            // Label1.text = "The Swipable Card plugin";
-            // Label1.textWrap=true;
-            // Label2.text = "Welcome to {N} we present you";
-            // Label2.textWrap=true;
-
-            //android specific
-            // Label1.textAlignment = "center";
-            // Label2.textAlignment = "center";
             stack.backgroundColor = new Color(randomColor());
             stack.margin = 2;
             stack.verticalAlignment = "middle";
@@ -97,8 +83,6 @@ export class SwipeEvent {
             stack.width =  width;
             stack.id = 'card' + Number(key);
             stack.marginTop = this.i;
-            // stack.addChild(Label2);
-            // stack.addChild(Label1);
             this.addChild(stack);
             //make card swipable
             let that = new WeakRef(this);
@@ -117,7 +101,6 @@ export class SwipeEvent {
             } 
             else if (args.state === 3) // up
             {
-
                 let currLocationX = stack.getLocationOnScreen().x;
                 let isToLeft:boolean;
                 let swipeX:number;                
@@ -165,10 +148,3 @@ export class SwipeEvent {
         });
     }  
  }
-
-
-
-
-
-
-
