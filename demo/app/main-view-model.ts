@@ -29,10 +29,6 @@ export class HelloWorldModel extends Observable {
     Label2.textWrap=true;
     Grid.addChild(Label1);
     Grid.addChild(Label2);
-    // Label1.textAlignment = "center";
-    // Label2.textAlignment = "center";
-    // // Grid.verticalAlignment = "middle";
-    // Grid.set("Label1", 1);
     // Star and Auto modes for rows behave like corresponding setting for columns but refer to row height.
     var firstRow = new ItemSpec(1, "auto");
     var secondRow = new ItemSpec(1, "auto");

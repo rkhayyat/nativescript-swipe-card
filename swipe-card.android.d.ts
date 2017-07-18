@@ -11,7 +11,9 @@ export declare class SwipeEvent {
 export declare class SwipeCard extends SwipeCardBase {
     static swipeEvent: string;
     i: number;
+    layoutHeight: Number;
+    layoutWidth: Number;
     constructor();
-    createItems(items: any): void;
-    handleSwipe(key: any, layout: Layout): void;
+    createItems(items: any, layoutHeight: any, layoutWidth: any): void;
+    handleSwipe(key: any, layout: Layout, layoutHeight: number, layoutWidth: number): void;
 }

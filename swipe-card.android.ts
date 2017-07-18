@@ -1,3 +1,4 @@
+// import { Common, SwipeCardBase, itemsProperty, heightProperty,widthProperty } from './swipe-card.common';
 import { Common, SwipeCardBase, itemsProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
@@ -49,39 +50,64 @@ export class SwipeEvent {
     return color;
 }
 
+
  export class SwipeCard extends SwipeCardBase {
    public static swipeEvent:string = 'swipeEvent';
-//    public cards: Layout[];
+
    i: number = 0;
-   [itemsProperty.setNative](value: Layout[]) {       
+   public layoutHeight: Number;
+   public layoutWidth: Number;
+
+
+    [itemsProperty.setNative](value: Layout[]) {       
         let items: Layout[] = value;
-        // this.cards = items;
-        this.createItems(items);
-    }
+        this.createItems(items, this.layoutHeight, this.layoutWidth);
+    };
+
+
+//    [heightProperty.setNative](value: number) {       
+//         this.heightPer = value;        
+//     }
+
+//    [widthProperty.setNative](value: number) {       
+//         this.widthPer = value;        
+//     }
 
    constructor() {
             super();
     }
+ 
+    // public onLoaded() {
+    //         super.onLoaded();
+            
+    // }
 
-    createItems(items){
+
+    createItems(items, layoutHeight, layoutWidth){     
             this.horizontalAlignment="center"; 
             this.paddingTop =30;
+            // this.width = screen.mainScreen.widthDIPs;
+            // this.height = screen.mainScreen.heightDIPs;
             for (var key in items) {
-                     this.handleSwipe(key,items[key]);
+                     this.handleSwipe(key,items[key], layoutHeight, layoutWidth);
             }
     }
 
-    handleSwipe(key: any, layout:Layout) {       
+    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number) {       
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
             layout.backgroundColor = new Color(randomColor());
             layout.margin = 2;
-            layout.verticalAlignment = "middle";
+            // layout.verticalAlignment = "middle";
+            // layout.horizontalAlignment = "center";
+            
             layout.color = new Color("#000000");
-            let width = screen.mainScreen.widthDIPs, height = screen.mainScreen.heightDIPs;
-            layout.height =  height/2;
-            layout.width =  width;
+            let width = this.width["value"]*screen.mainScreen.widthDIPs, height = this.height["value"]*screen.mainScreen.heightDIPs;
+            layout.width =  width*layoutWidth/100;
+            layout.height =  height*layoutHeight/100;
+            layout.left= (this.width["value"]*screen.mainScreen.widthDIPs-layout.width)/2;
+            layout.top=(this.height["value"]*screen.mainScreen.heightDIPs-layout.height)/4;
             layout.id = 'card' + Number(key);
             layout.marginTop = this.i;
             this.addChild(layout);
@@ -101,16 +127,17 @@ export class SwipeEvent {
                 prevDeltaY = args.deltaY;
             } 
             else if (args.state === 3) // up
-            {
-                let currLocationX = layout.getLocationOnScreen().x;
+            {                                
+                let currLocationX = layout.getLocationOnScreen().x-(screen.mainScreen.widthDIPs-<number>layout.width)/2;
                 let isToLeft:boolean;
                 let swipeX:number;                
                 if (currLocationX<0) {
                     currLocationX = currLocationX*(-1);
                     isToLeft = true;
                 }
-                let shiftX = <number>layout.width - currLocationX;
-                let movPerc = shiftX/<number>layout.width;
+
+                let shiftX = (this.width["value"]*screen.mainScreen.widthDIPs) - currLocationX;
+                let movPerc = shiftX/(this.width["value"]*screen.mainScreen.widthDIPs);
                 if (movPerc < 0.5)  {
                     let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,

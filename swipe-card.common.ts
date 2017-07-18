@@ -28,6 +28,18 @@ export const itemsProperty = new Property<SwipeCardBase, any[]>({
 });
 itemsProperty.register(SwipeCardBase);
 
+export const heightProperty = new Property<SwipeCardBase, any[]>({
+    name: "layoutHeight",
+    equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
+});
+heightProperty.register(SwipeCardBase);
+
+export const widthProperty = new Property<SwipeCardBase, any[]>({
+    name: "layoutWidth",
+    equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
+});
+widthProperty.register(SwipeCardBase);
+
 
 export class Utils {
   public static SUCCESS_MSG(): string {
