@@ -26,7 +26,7 @@ tns plugin add nativescript-swipe-card
       xmlns:customControls="nativescript-swipe-card"
       loaded="pageLoaded" class="page">
     <StackLayout>
-        <customControls:SwipeCard id="swipe" items="{{ items }}"/>
+        <customControls:SwipeCard id="swipe" height="90%" width="80%" items="{{ stackItems }}" layoutHeight="60" layoutWidth="70"/>
   </StackLayout>
 </Page>
 ```
