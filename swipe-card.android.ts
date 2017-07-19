@@ -57,11 +57,13 @@ export class SwipeEvent {
    i: number = 0;
    public layoutHeight: Number;
    public layoutWidth: Number;
+   public layoutBorderRadius: Number;
+   public layoutBorderWidth:Number;
 
 
     [itemsProperty.setNative](value: Layout[]) {       
         let items: Layout[] = value;
-        this.createItems(items, this.layoutHeight, this.layoutWidth);
+        this.createItems(items, this.layoutHeight, this.layoutWidth, this.layoutBorderRadius, this.layoutBorderWidth);
     };
 
 
@@ -83,33 +85,35 @@ export class SwipeEvent {
     // }
 
 
-    createItems(items, layoutHeight, layoutWidth){     
+    createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth){     
             this.horizontalAlignment="center"; 
-            this.paddingTop =30;
+            this.top =30;
+            this.borderWidth=2;
+            this.borderColor = new Color("blue");
             // this.width = screen.mainScreen.widthDIPs;
             // this.height = screen.mainScreen.heightDIPs;
             for (var key in items) {
-                     this.handleSwipe(key,items[key], layoutHeight, layoutWidth);
+                     this.handleSwipe(key,items[key], layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth);
             }
     }
 
-    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number) {       
+    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number, layoutBorderRadius:number, layoutBorderWidth:number) {       
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
             layout.backgroundColor = new Color(randomColor());
             layout.margin = 2;
-            // layout.verticalAlignment = "middle";
-            // layout.horizontalAlignment = "center";
-            
-            layout.color = new Color("#000000");
+            layout.color = new Color("#000000");            
+            layout.borderRadius = layoutBorderRadius;
+            layout.borderWidth=layoutBorderWidth;
+            layout.borderColor = new Color("#000000");
             let width = this.width["value"]*screen.mainScreen.widthDIPs, height = this.height["value"]*screen.mainScreen.heightDIPs;
             layout.width =  width*layoutWidth/100;
             layout.height =  height*layoutHeight/100;
             layout.left= (this.width["value"]*screen.mainScreen.widthDIPs-layout.width)/2;
             layout.top=(this.height["value"]*screen.mainScreen.heightDIPs-layout.height)/4;
             layout.id = 'card' + Number(key);
-            layout.marginTop = this.i;
+            layout.marginTop = this.i*5;
             this.addChild(layout);
             //make card swipable
             let that = new WeakRef(this);

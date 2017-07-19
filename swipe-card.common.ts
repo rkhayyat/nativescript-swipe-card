@@ -38,7 +38,23 @@ export const widthProperty = new Property<SwipeCardBase, any[]>({
     name: "layoutWidth",
     equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
 });
+
 widthProperty.register(SwipeCardBase);
+
+export const borderRadiusProperty = new Property<SwipeCardBase, any[]>({
+    name: "layoutBorderRadius",
+    equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
+});
+
+borderRadiusProperty.register(SwipeCardBase);
+
+export const borderWidthProperty = new Property<SwipeCardBase, any[]>({
+    name: "layoutBorderWidth",
+    equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
+});
+
+borderWidthProperty.register(SwipeCardBase);
+
 
 
 export class Utils {
