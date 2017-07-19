@@ -26,7 +26,15 @@ tns plugin add nativescript-swipe-card
       xmlns:customControls="nativescript-swipe-card"
       loaded="pageLoaded" class="page">
     <StackLayout>
-        <customControls:SwipeCard id="swipe" height="90%" width="80%" items="{{ stackItems }}" layoutHeight="60" layoutWidth="70"/>
+        <customControls:SwipeCard id="swipe" 
+                                  height="90%"
+                                  width="80%" 
+                                  items="{{ stackItems }}" 
+                                  layoutHeight="60" 
+                                  layoutWidth="70"
+                                  layoutBorderRadius="20"
+                                  layoutBorderWidth="2"
+                                  />
   </StackLayout>
 </Page>
 ```
@@ -69,8 +77,10 @@ export function pageLoaded(args: observable.EventData) {
 | Method | Return | Description |
 | --- | --- | --- |
 | `items` | `Array<Layout>` | Array of card's layout, in which we can define the content of each card. |
-| `layoutHeight` | `number` | Card's height in percentage of their container's height. |
-| `layoutWidth` | `number` | Card's width in percentage of their container's width. |
+| `layoutHeight` (optional)| `number` | Card's height in percentage of their container's height. |
+| `layoutWidth` (optional)| `number` | Card's width in percentage of their container's width. |
+| `layoutBorderRadius` (optional)| `number` | Card's border radius. |
+| `layoutBorderWidth` (optional)| `number` | Card's border's width. |
 
 
 ## NativeBaguette 🥖
