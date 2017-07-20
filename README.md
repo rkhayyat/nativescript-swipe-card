@@ -20,6 +20,7 @@ tns plugin add nativescript-swipe-card
 
 ## Typescript NativeScript
 
+### XML
   
 ```xml
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
@@ -38,7 +39,7 @@ tns plugin add nativescript-swipe-card
   </StackLayout>
 </Page>
 ```
-### Component
+### main-page
 
 ```typescript
 import * as observable from 'tns-core-modules/data/observable';
@@ -62,6 +63,65 @@ export function pageLoaded(args: observable.EventData) {
                     console.log('Swiped to left');
         }
     });
+}
+```
+### main-view-model
+```typescript
+import {Observable} from 'tns-core-modules/data/observable';
+import {SwipeCard} from 'nativescript-swipe-card';
+import {Layout} from "tns-core-modules/ui/layouts/layout";
+import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
+import {GridLayout, ItemSpec} from "tns-core-modules/ui/layouts/grid-layout";
+import {Label} from "tns-core-modules/ui/label";
+import {Image} from "tns-core-modules/ui/image";
+import {Button} from "tns-core-modules/ui/button";
+
+export class HelloWorldModel extends Observable {
+  public message: string;
+  public version: string;
+  public stackCards:Layout[];
+  
+  private swipeCard: SwipeCard;
+  constructor() {
+    super();
+
+    let Grid = new GridLayout();
+    let Label1 = new Label();
+    let Label2 = new Label();
+    Label1.text = "The Swipable Card plugin";
+    Label1.textWrap=true;
+    Label2.text = "Welcome to {N} we present you";
+    Label2.textWrap=true;
+    Grid.addChild(Label1);
+    Grid.addChild(Label2);
+    // Star and Auto modes for rows behave like corresponding setting for columns but refer to row height.
+    var firstRow = new ItemSpec(1, "auto");
+    var secondRow = new ItemSpec(1, "auto");
+    Grid.addRow(firstRow);
+    Grid.addRow(secondRow);
+    GridLayout.setRow(Label1,0);
+    GridLayout.setRow(Label2,1);
+
+
+    let stack2 = new StackLayout();
+    let image = new Image();
+    image.src="~/images/apple.jpg"
+    image.height=100;
+    image.width=100;
+    stack2.verticalAlignment = "middle";
+    stack2.addChild(image);
+    
+
+    let stack3 = new StackLayout();
+    let button = new Button();
+    button.text="Click me!";
+    button.width=100;
+    button.textAlignment = "center";
+    stack3.verticalAlignment = "middle";
+    stack3.addChild(button);
+    this.stackCards = [stack3,stack2,Grid];
+  }
+  
 }
 ```
 
