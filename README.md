@@ -68,7 +68,6 @@ export function pageLoaded(args: observable.EventData) {
 ### main-view-model
 ```typescript
 import {Observable} from 'tns-core-modules/data/observable';
-import {SwipeCard} from 'nativescript-swipe-card';
 import {Layout} from "tns-core-modules/ui/layouts/layout";
 import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
 import {GridLayout, ItemSpec} from "tns-core-modules/ui/layouts/grid-layout";
@@ -80,8 +79,7 @@ export class HelloWorldModel extends Observable {
   public message: string;
   public version: string;
   public stackCards:Layout[];
-  
-  private swipeCard: SwipeCard;
+
   constructor() {
     super();
 
