@@ -30,10 +30,10 @@ tns plugin add nativescript-swipe-card
                                   height="90%"
                                   width="80%" 
                                   items="{{ stackCards }}" 
-                                  layoutHeight="60" 
-                                  layoutWidth="70"
-                                  layoutBorderRadius="20"
-                                  layoutBorderWidth="2"
+                                  cardHeight="60" 
+                                  cardWidth="70"
+                                  cardBorderRadius="20"
+                                  cardBorderWidth="2"
                                   />
   </StackLayout>
 </Page>
