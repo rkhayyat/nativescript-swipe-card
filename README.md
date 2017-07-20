@@ -77,10 +77,10 @@ export function pageLoaded(args: observable.EventData) {
 | Method | Return | Description |
 | --- | --- | --- |
 | `items` | `Array<Layout>` | Array of card's layout, in which we can define the content of each card. |
-| `layoutHeight` (optional)| `number` | Card's height in percentage of their container's height. |
-| `layoutWidth` (optional)| `number` | Card's width in percentage of their container's width. |
-| `layoutBorderRadius` (optional)| `number` | Card's border radius. |
-| `layoutBorderWidth` (optional)| `number` | Card's border's width. |
+| `cardHeight` (optional)| `number` | Card's height in percentage of their container's height. |
+| `cardWidth` (optional)| `number` | Card's width in percentage of their container's width. |
+| `cardBorderRadius` (optional)| `number` | Card's border radius. |
+| `cardBorderWidth` (optional)| `number` | Card's border's width. |
 
 
 ## NativeBaguette 🥖
