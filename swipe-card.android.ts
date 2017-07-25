@@ -172,7 +172,7 @@ export class SwipeEvent {
                             x:0,
                             y:0
                         },
-                        duration: 500
+                        duration: 200
                     });
                 }
 
