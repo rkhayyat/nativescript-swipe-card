@@ -3,8 +3,8 @@
       loaded="pageLoaded" class="page">
     <StackLayout>
         <customControls:SwipeCard id="swipe" 
-                                  height="90%"
-                                  width="80%" 
+                                  height="50%"
+                                   
                                   items="{{ stackItems }}" 
                                   layoutHeight="60" 
                                   layoutWidth="70"

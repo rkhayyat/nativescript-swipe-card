@@ -66,24 +66,10 @@ export class SwipeEvent {
         this.createItems(items, this.layoutHeight, this.layoutWidth, this.layoutBorderRadius, this.layoutBorderWidth);
     };
 
-
-//    [heightProperty.setNative](value: number) {       
-//         this.heightPer = value;        
-//     }
-
-//    [widthProperty.setNative](value: number) {       
-//         this.widthPer = value;        
-//     }
-
    constructor() {
             super();
     }
  
-    // public onLoaded() {
-    //         super.onLoaded();
-            
-    // }
-
 
     createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth){     
             this.horizontalAlignment="center"; 
@@ -97,21 +83,37 @@ export class SwipeEvent {
             }
     }
 
-    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number, layoutBorderRadius:number, layoutBorderWidth:number) {       
+    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number, layoutBorderRadius:number, layoutBorderWidth:number) {
+
+            let defaultLayoutHeight= layoutHeight?layoutHeight:100;
+            let defaultLayoutWidth = layoutWidth?layoutWidth:100;
+            let defaultLayoutBorderRadius = layoutBorderRadius?layoutBorderRadius:0;
+            let defaultLayoutBorderWidth= layoutBorderWidth?layoutBorderWidth:0;
+            let containerWidth = this.width["value"]?this.width["value"]:((<number>this.width)/screen.mainScreen.widthDIPs);
+            let containerHeight = this.height["value"]?this.height["value"]:((<number>this.height)/screen.mainScreen.heightDIPs);
+            containerWidth=containerWidth?containerWidth:0.5;
+            containerHeight=containerHeight?containerHeight:0.5;
+
+            console.log(containerWidth);
+            console.log(containerHeight);
+
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
             layout.backgroundColor = new Color(randomColor());
             layout.margin = 2;
             layout.color = new Color("#000000");            
-            layout.borderRadius = layoutBorderRadius;
-            layout.borderWidth=layoutBorderWidth;
+            layout.borderRadius = defaultLayoutBorderRadius;
+            layout.borderWidth=defaultLayoutBorderWidth;
             layout.borderColor = new Color("#000000");
-            let width = this.width["value"]*screen.mainScreen.widthDIPs, height = this.height["value"]*screen.mainScreen.heightDIPs;
-            layout.width =  width*layoutWidth/100;
-            layout.height =  height*layoutHeight/100;
-            layout.left= (this.width["value"]*screen.mainScreen.widthDIPs-layout.width)/2;
-            layout.top=(this.height["value"]*screen.mainScreen.heightDIPs-layout.height)/4;
+            // let width = this.width["value"]*screen.mainScreen.widthDIPs, height = this.height["value"]*screen.mainScreen.heightDIPs;
+            let width = containerWidth*screen.mainScreen.widthDIPs, height = containerHeight*screen.mainScreen.heightDIPs;
+            layout.width =  width*defaultLayoutWidth/100;
+            layout.height =  height*defaultLayoutHeight/100;            
+            // layout.left= (this.width["value"]*screen.mainScreen.widthDIPs-layout.width)/2;
+            // layout.top=(this.height["value"]*screen.mainScreen.heightDIPs-layout.height)/4;
+            layout.left= (containerWidth*screen.mainScreen.widthDIPs-layout.width)/2;
+            layout.top=(containerHeight*screen.mainScreen.heightDIPs-layout.height)/4;
             layout.id = 'card' + Number(key);
             layout.marginTop = this.i*5;
             this.addChild(layout);
@@ -140,8 +142,10 @@ export class SwipeEvent {
                     isToLeft = true;
                 }
 
-                let shiftX = (this.width["value"]*screen.mainScreen.widthDIPs) - currLocationX;
-                let movPerc = shiftX/(this.width["value"]*screen.mainScreen.widthDIPs);
+                // let shiftX = (this.width["value"]*screen.mainScreen.widthDIPs) - currLocationX;
+                // let movPerc = shiftX/(this.width["value"]*screen.mainScreen.widthDIPs);
+                let shiftX = (containerWidth*screen.mainScreen.widthDIPs) - currLocationX;
+                let movPerc = shiftX/(containerWidth*screen.mainScreen.widthDIPs);
                 if (movPerc < 0.5)  {
                     let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,
