@@ -1,3 +1,8 @@
+[![npm](https://img.shields.io/npm/v/nativescript-swipe-card.svg)](https://www.npmjs.com/package/nativescript-swipe-card)
+[![npm](https://img.shields.io/npm/dt/nativescript-swipe-card.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-swipe-card)
+
+[![NPM](https://nodei.co/npm/nativescript-swipe-card.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-swipe-card/)
+
 # Nativescript Swipe Card plugin
 This plugin is inspired by https://www.nativescript.org/blog/tinder-style-cards-with-nativescript---love-at-first-swipe
 
