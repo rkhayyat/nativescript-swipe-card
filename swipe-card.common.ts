@@ -7,6 +7,7 @@ import {Button} from "tns-core-modules/ui/button";
 import {AbsoluteLayout} from "tns-core-modules/ui/layouts/absolute-layout";
 import { Property } from "tns-core-modules/ui/core/properties";
 import { View } from "tns-core-modules/ui/core/view";
+import {Layout} from "tns-core-modules/ui/layouts/layout";
 
 export class Common extends Observable {
   public message: string;
@@ -29,27 +30,27 @@ export const itemsProperty = new Property<SwipeCardBase, any[]>({
 itemsProperty.register(SwipeCardBase);
 
 export const heightProperty = new Property<SwipeCardBase, any[]>({
-    name: "layoutHeight",
+    name: "cardHeight",
     equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
 });
 heightProperty.register(SwipeCardBase);
 
 export const widthProperty = new Property<SwipeCardBase, any[]>({
-    name: "layoutWidth",
+    name: "cardWidth",
     equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
 });
 
 widthProperty.register(SwipeCardBase);
 
 export const borderRadiusProperty = new Property<SwipeCardBase, any[]>({
-    name: "layoutBorderRadius",
+    name: "cardBorderRadius",
     equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
 });
 
 borderRadiusProperty.register(SwipeCardBase);
 
 export const borderWidthProperty = new Property<SwipeCardBase, any[]>({
-    name: "layoutBorderWidth",
+    name: "cardBorderWidth",
     equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
 });
 
