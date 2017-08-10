@@ -11,10 +11,10 @@ export declare class SwipeEvent {
 export declare class SwipeCard extends SwipeCardBase {
     static swipeEvent: string;
     i: number;
-    layoutHeight: Number;
-    layoutWidth: Number;
-    layoutBorderRadius: Number;
-    layoutBorderWidth: Number;
+    cardHeight: Number;
+    cardWidth: Number;
+    cardBorderRadius: Number;
+    cardBorderWidth: Number;
     constructor();
     createItems(items: any, layoutHeight: any, layoutWidth: any, layoutBorderRadius: any, layoutBorderWidth: any): void;
     handleSwipe(key: any, layout: Layout, layoutHeight: number, layoutWidth: number, layoutBorderRadius: number, layoutBorderWidth: number): void;

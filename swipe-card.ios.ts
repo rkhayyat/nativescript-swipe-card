@@ -1,5 +1,5 @@
 // import { Common, SwipeCardBase, itemsProperty, heightProperty,widthProperty } from './swipe-card.common';
-import { Common, SwipeCardBase, itemsProperty } from './swipe-card.common';
+import { Common, SwipeCardBase, itemsProperty, heightProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
 import {Layout} from "tns-core-modules/ui/layouts/layout";
@@ -55,23 +55,25 @@ export class SwipeEvent {
    public static swipeEvent:string = 'swipeEvent';
 
    i: number = 0;
-   public layoutHeight: Number;
-   public layoutWidth: Number;
-   public layoutBorderRadius: Number;
-   public layoutBorderWidth:Number;
+   public cardHeight: Number;
+   public cardWidth: Number;
+   public cardBorderRadius: Number;
+   public cardBorderWidth:Number;
 
 
-    [itemsProperty.setNative](value: Layout[]) {       
-        let items: Layout[] = value;
-        this.createItems(items, this.layoutHeight, this.layoutWidth, this.layoutBorderRadius, this.layoutBorderWidth);
+    [itemsProperty.setNative](value:Layout[]) {
+        let items: Layout[] = <Layout[]>value;
+        this.createItems(items, this.cardHeight, this.cardWidth, this.cardBorderRadius, this.cardBorderWidth);
     };
 
+	
    constructor() {
             super();
     }
  
 
-    createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth){     
+    createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth){ 
+			
             this.horizontalAlignment="center"; 
             this.top =30;
             this.borderWidth=2;
@@ -94,8 +96,8 @@ export class SwipeEvent {
             containerWidth=containerWidth?containerWidth:0.5;
             containerHeight=containerHeight?containerHeight:0.5;
 
-            console.log(containerWidth);
-            console.log(containerHeight);
+            /*console.log(containerWidth);
+            console.log(containerHeight);*/
 
             this.i--;
             let prevDeltaX:number =0;
@@ -115,7 +117,7 @@ export class SwipeEvent {
             layout.left= (containerWidth*screen.mainScreen.widthDIPs-layout.width)/2;
             layout.top=(containerHeight*screen.mainScreen.heightDIPs-layout.height)/4;
             layout.id = 'card' + Number(key);
-            layout.marginTop = this.i*5;
+            layout.marginTop = this.i*2;
             this.addChild(layout);
             //make card swipable
             let that = new WeakRef(this);

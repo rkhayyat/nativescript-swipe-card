@@ -117,7 +117,7 @@ export class SwipeEvent {
             layout.left= (containerWidth*screen.mainScreen.widthDIPs-layout.width)/2;
             layout.top=(containerHeight*screen.mainScreen.heightDIPs-layout.height)/4;
             layout.id = 'card' + Number(key);
-            layout.marginTop = this.i*5;
+            layout.marginTop = this.i*2;
             this.addChild(layout);
             //make card swipable
             let that = new WeakRef(this);
