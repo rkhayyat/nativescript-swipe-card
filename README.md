@@ -59,7 +59,6 @@ export function pageLoaded(args: observable.EventData) {
     page.bindingContext = new HelloWorldModel();
     let swipeCard = page.getViewById("swipe");
     swipeCard.on("swipeEvent", (args:SwipeEvent) => {
-        console.log(args.direction);
         if (args.direction === 1) {
                     //right
                     console.log('Swiped to right');
