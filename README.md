@@ -126,7 +126,25 @@ export class HelloWorldModel extends Observable {
   
 }
 ```
+## Angular NativeScript
 
+### XML
+```xml
+        <SwipeCard id="swipe" 
+                   height="90%"
+                    width="80%" 
+                    [items]="stackCards" 
+                    cardHeight="60" 
+                    cardWidth="70"
+                    cardBorderRadius="20"
+                    cardBorderWidth="2">
+         </SwipeCard>
+```
+### Component
+```
+import * as elementRegistryModule from 'nativescript-angular/element-registry';
+elementRegistryModule.registerElement("SwipeCard", () => require("nativescript-swipe-card").SwipeCard);
+```
 ## API
 
 ### Properties
