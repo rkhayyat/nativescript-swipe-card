@@ -141,7 +141,7 @@ export class HelloWorldModel extends Observable {
          </SwipeCard>
 ```
 ### Component
-```
+```typescript
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
 elementRegistryModule.registerElement("SwipeCard", () => require("nativescript-swipe-card").SwipeCard);
 ```
