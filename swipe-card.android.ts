@@ -20,7 +20,8 @@ export class Myplugin extends Common {
 export class SwipeEvent {
     eventName: string;
     object: any;
-    direction:number
+    direction:number;
+	cardIndex:number;
 } 
 
  function randomColor():string {
@@ -152,7 +153,8 @@ export class SwipeEvent {
                     let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,
                         object: this,
-                        direction:isToLeft?2:1
+                        direction:isToLeft?2:1,
+						cardIndex:Number(key)
                     }
                     if (isToLeft) {
                         swipeX = -2000;
