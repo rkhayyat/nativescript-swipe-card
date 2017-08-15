@@ -130,15 +130,15 @@ export class HelloWorldModel extends Observable {
 
 ### XML
 ```xml
-        <SwipeCard id="swipe" 
-                   height="90%"
-                    width="80%" 
-                    [items]="stackCards" 
-                    cardHeight="60" 
-                    cardWidth="70"
-                    cardBorderRadius="20"
-                    cardBorderWidth="2">
-         </SwipeCard>
+        <SwipeCard  height="75%"
+                    width="100%" 
+                    [items]="stackCards"
+                    (swipeEvent)="swipeEvent($event)"
+                    cardHeight="50" 
+                    cardWidth="80"
+                    cardBorderRadius="15"
+                    cardBorderWidth="1">
+        </SwipeCard> 
 ```
 ### Component
 ```typescript
