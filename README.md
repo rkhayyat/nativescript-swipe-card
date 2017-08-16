@@ -144,6 +144,24 @@ export class HelloWorldModel extends Observable {
 ```typescript
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
 elementRegistryModule.registerElement("SwipeCard", () => require("nativescript-swipe-card").SwipeCard);
+import {SwipeEvent} from 'nativescript-swipe-card';
+@Component({
+    moduleId: module.id,
+    templateUrl: "helloworld.html"
+})
+export class helloworldComponent {
+
+  swipeEvent(args:SwipeEvent) {
+        if (args.direction === 1) {
+                    //right
+                    console.log('Swiped to right');
+        } else {
+                    //left
+                    console.log('Swiped to left');
+        }
+  };   
+}
+
 ```
 ## API
 
