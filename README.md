@@ -154,7 +154,9 @@ import {SwipeEvent} from 'nativescript-swipe-card';
     templateUrl: "helloworld.html"
 })
 export class helloworldComponent {
-public stackCards:Array<Layout>=[];
+
+  public stackCards:Array<Layout>=[];
+  
   constructor() {
     let Grid = new GridLayout();
     let Label1 = new Label();
