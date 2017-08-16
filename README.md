@@ -210,7 +210,7 @@ export class helloworldComponent {
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| `swipeEvent` | `function` | `null` | Callback called when the layout is swiped to the right or left and the swipe animation is done. |
+| `swipeEvent` | `function` | `SwipeEvent` | Callback called when the layout is swiped to the right or left and the swipe animation is done. it will return args:SwipeEvent. args.direction (1 if right/2 if left), args.cardIndex contain the card index  |
 
 ### Methods
 
