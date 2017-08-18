@@ -204,7 +204,8 @@ export class helloworldComponent {
 }
 
 ```
-I used this plugin in other application built in Angular, you can check it here https://github.com/rkhayyat/SyrianForumFrance
+PS: I used this plugin in other application built in <b>Angular</b>, you can check it here:
+https://github.com/rkhayyat/SyrianForumFrance
 ## API
 
 ### Properties
