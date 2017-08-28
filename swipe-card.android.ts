@@ -77,8 +77,8 @@ export class SwipeEvent {
 			
             this.horizontalAlignment="center"; 
             this.top =30;
-            this.borderWidth=2;
-            this.borderColor = new Color("blue");
+            //this.borderWidth=2;
+            //this.borderColor = new Color("blue");
             // this.width = screen.mainScreen.widthDIPs;
             // this.height = screen.mainScreen.heightDIPs;
             for (var key in items) {
@@ -158,12 +158,12 @@ export class SwipeEvent {
                     }
                     if (isToLeft) {
                         swipeX = -2000;
-                        this.notify(eventData);
+              //          this.notify(eventData);
                         
                     }
                     else {
                         swipeX = 2000;
-                        this.notify(eventData);
+              //        this.notify(eventData);
                     }
                     layout.animate({
                         translate: {
@@ -171,7 +171,9 @@ export class SwipeEvent {
                             y:0
                         },
                         duration: 500            
-                    });
+                    }).then(()=>{
+						this.notify(eventData);
+					});
 
 
                 } else {

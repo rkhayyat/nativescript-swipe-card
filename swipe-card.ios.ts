@@ -20,7 +20,8 @@ export class Myplugin extends Common {
 export class SwipeEvent {
     eventName: string;
     object: any;
-    direction:number
+    direction:number;
+	cardIndex:number;
 } 
 
  function randomColor():string {
@@ -76,8 +77,8 @@ export class SwipeEvent {
 			
             this.horizontalAlignment="center"; 
             this.top =30;
-            this.borderWidth=2;
-            this.borderColor = new Color("blue");
+            //this.borderWidth=2;
+            //this.borderColor = new Color("blue");
             // this.width = screen.mainScreen.widthDIPs;
             // this.height = screen.mainScreen.heightDIPs;
             for (var key in items) {
@@ -152,16 +153,15 @@ export class SwipeEvent {
                     let eventData:SwipeEvent = {
                         eventName: SwipeCard.swipeEvent,
                         object: this,
-                        direction:isToLeft?2:1
+                        direction:isToLeft?2:1,
+						cardIndex:Number(key)
                     }
                     if (isToLeft) {
                         swipeX = -2000;
-                        this.notify(eventData);
                         
                     }
                     else {
                         swipeX = 2000;
-                        this.notify(eventData);
                     }
                     layout.animate({
                         translate: {
@@ -169,9 +169,9 @@ export class SwipeEvent {
                             y:0
                         },
                         duration: 500            
-                    });
-
-
+                    }).then(()=>{
+						this.notify(eventData);
+					});
                 } else {
                     layout.animate({
                         translate: {

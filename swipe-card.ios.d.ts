@@ -7,6 +7,7 @@ export declare class SwipeEvent {
     eventName: string;
     object: any;
     direction: number;
+    cardIndex: number;
 }
 export declare class SwipeCard extends SwipeCardBase {
     static swipeEvent: string;
