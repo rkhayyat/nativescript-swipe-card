@@ -39,6 +39,7 @@ tns plugin add nativescript-swipe-card
                                   items="{{ stackCards }}" 
                                   cardHeight="60" 
                                   cardWidth="70"
+                                  isRandomColor="1"
                                   cardBorderRadius="20"
                                   cardBorderWidth="2"
                                   />
@@ -135,6 +136,7 @@ export class HelloWorldModel extends Observable {
                     (swipeEvent)="swipeEvent($event)"
                     cardHeight="50" 
                     cardWidth="80"
+                    isRandomColor="1"
                     cardBorderRadius="15"
                     cardBorderWidth="1">
         </SwipeCard> 
@@ -224,6 +226,7 @@ https://github.com/rkhayyat/SyrianForumFrance
 | `cardWidth` (optional)| `number` | Card's width in percentage of their container's width. |
 | `cardBorderRadius` (optional)| `number` | Card's border radius. |
 | `cardBorderWidth` (optional)| `number` | Card's border's width. |
+| `isRandomColor` (optional)| `number` | 1 Random color cards, 2 manual colors |
 
 
 ## NativeBaguette 🥖
