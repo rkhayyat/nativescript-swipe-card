@@ -7,5 +7,6 @@ export declare class Myplugin extends Common {
 export declare interface SwipeEvent   {
       eventName: string,
       object: any,
-      direction:number
+      direction:number,
+	  cardIndex:number;
 }

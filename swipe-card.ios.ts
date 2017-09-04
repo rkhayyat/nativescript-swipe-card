@@ -1,5 +1,4 @@
-// import { Common, SwipeCardBase, itemsProperty, heightProperty,widthProperty } from './swipe-card.common';
-import { Common, SwipeCardBase, itemsProperty, heightProperty } from './swipe-card.common';
+import { Common, SwipeCardBase, itemsProperty, heightProperty, randomColorProperty } from './swipe-card.common';
 import { android as androidApplication } from 'application';
 import { GesturesObserver, GestureTypes, SwipeGestureEventData, GestureEventData, TouchGestureEventData, PanGestureEventData, SwipeDirection } from "tns-core-modules/ui/gestures/gestures";
 import {Layout} from "tns-core-modules/ui/layouts/layout";
@@ -60,11 +59,11 @@ export class SwipeEvent {
    public cardWidth: Number;
    public cardBorderRadius: Number;
    public cardBorderWidth:Number;
-
+   public isRandomColor:Number;
 
     [itemsProperty.setNative](value:Layout[]) {
         let items: Layout[] = <Layout[]>value;
-        this.createItems(items, this.cardHeight, this.cardWidth, this.cardBorderRadius, this.cardBorderWidth);
+        this.createItems(items, this.cardHeight, this.cardWidth, this.cardBorderRadius, this.cardBorderWidth, this.isRandomColor);
     };
 
 	
@@ -73,37 +72,34 @@ export class SwipeEvent {
     }
  
 
-    createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth){ 
+    createItems(items, layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth, isRandomColor){ 
 			
             this.horizontalAlignment="center"; 
             this.top =30;
-            //this.borderWidth=2;
-            //this.borderColor = new Color("blue");
-            // this.width = screen.mainScreen.widthDIPs;
-            // this.height = screen.mainScreen.heightDIPs;
             for (var key in items) {
-                     this.handleSwipe(key,items[key], layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth);
+                     this.handleSwipe(key,items[key], layoutHeight, layoutWidth, layoutBorderRadius, layoutBorderWidth, isRandomColor);
             }
     }
 
-    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number, layoutBorderRadius:number, layoutBorderWidth:number) {
+    handleSwipe(key: any, layout:Layout, layoutHeight:number, layoutWidth:number, layoutBorderRadius:number, layoutBorderWidth:number, isRandomColor:number) {
 
             let defaultLayoutHeight= layoutHeight?layoutHeight:100;
             let defaultLayoutWidth = layoutWidth?layoutWidth:100;
             let defaultLayoutBorderRadius = layoutBorderRadius?layoutBorderRadius:0;
             let defaultLayoutBorderWidth= layoutBorderWidth?layoutBorderWidth:0;
+			let defaultRandomColor = isRandomColor?isRandomColor:1;
             let containerWidth = this.width["value"]?this.width["value"]:((<number>this.width)/screen.mainScreen.widthDIPs);
             let containerHeight = this.height["value"]?this.height["value"]:((<number>this.height)/screen.mainScreen.heightDIPs);
             containerWidth=containerWidth?containerWidth:0.5;
             containerHeight=containerHeight?containerHeight:0.5;
 
-            /*console.log(containerWidth);
-            console.log(containerHeight);*/
-
             this.i--;
             let prevDeltaX:number =0;
             let prevDeltaY:number =0;
-            layout.backgroundColor = new Color(randomColor());
+			console.log(isRandomColor);
+            if (defaultRandomColor===1) {
+                layout.backgroundColor = new Color(randomColor());
+            }
             layout.margin = 2;
             layout.color = new Color("#000000");            
             layout.borderRadius = defaultLayoutBorderRadius;
@@ -162,6 +158,7 @@ export class SwipeEvent {
                     }
                     else {
                         swipeX = 2000;
+
                     }
                     layout.animate({
                         translate: {
@@ -172,6 +169,8 @@ export class SwipeEvent {
                     }).then(()=>{
 						this.notify(eventData);
 					});
+
+
                 } else {
                     layout.animate({
                         translate: {

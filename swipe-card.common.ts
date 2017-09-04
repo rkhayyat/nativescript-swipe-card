@@ -56,6 +56,13 @@ export const borderWidthProperty = new Property<SwipeCardBase, any[]>({
 
 borderWidthProperty.register(SwipeCardBase);
 
+export const randomColorProperty = new Property<SwipeCardBase, any[]>({
+    name: "isRandomColor",
+    equalityComparer: (a: any[], b: any[]) => !a && !b && a.length === b.length
+});
+
+randomColorProperty.register(SwipeCardBase);
+
 
 
 export class Utils {
