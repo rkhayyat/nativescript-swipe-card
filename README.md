@@ -1,7 +1,6 @@
 [![npm](https://img.shields.io/npm/v/nativescript-swipe-card.svg)](https://www.npmjs.com/package/nativescript-swipe-card)
 [![npm](https://img.shields.io/npm/dt/nativescript-swipe-card.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-swipe-card)
 [![twitter: @rakhayyat](https://img.shields.io/badge/twitter-%40rakhayyat-2F98C1.svg)](https://twitter.com/rakhayyat)
-[![linkedin: rachid-al-khayyat-80072444](https://img.shields.io/badge/linkedin-%40rakhayyat-2F98C1.svg)](https://www.linkedin.com/in/rachid-al-khayyat-80072444/)
 
 [![NPM](https://nodei.co/npm/nativescript-swipe-card.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-swipe-card/)
 
