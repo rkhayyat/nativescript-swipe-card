@@ -126,6 +126,9 @@ export class HelloWorldModel extends Observable {
   
 }
 ```
+Fun fact! Team Time-Travel (Luna Kang, Stefan Medjo and mentor Jen Looper used the plugin to complete their 'Fetching' app - a Tinder app for dogs that uses the Petfinder API to help dogs to find puppy playdates in their area!
+https://github.com/jlooper/fetching-app-vanilla
+
 ## Angular NativeScript
 
 ### XML
