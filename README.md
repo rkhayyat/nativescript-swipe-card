@@ -13,7 +13,7 @@ Tender cards, allow you to drag them, and detect swipe events.
 
 Developed with :heart: by the team [NativeBaguette 🥖](https://www.nativescript.org/blog/meet-the-nativescript-ambassadors)
 
-To know more about the {N} ambassador's program, you can check this [video](https://www.youtube.com/watch?v=Of-EeB56Fuc&t=4s), or read this [article](https://www.nativescript.org/blog/building-the-nativescript-swipe-cards-plugins-an-ambassador-story) 
+To know more about the {N} ambassador's program, you can check this [video](https://www.youtube.com/watch?v=Of-EeB56Fuc&t=4s), or read this [article](https://www.nativescript.org/blog/building-the-nativescript-swipe-cards-plugins-an-ambassador-story). 
 <p align="center">
   <img src="https://github.com/rkhayyat/nativescript-swipe-card/blob/master/screenshot/swipeCard.gif" width="300"/>
 </p>
