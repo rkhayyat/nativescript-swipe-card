@@ -226,7 +226,7 @@ https://github.com/rkhayyat/SyrianForumFrance
 | `cardWidth` (optional)| `number` | Card's width in percentage of their container's width. |
 | `cardBorderRadius` (optional)| `number` | Card's border radius. |
 | `cardBorderWidth` (optional)| `number` | Card's border's width. |
-| `isRandomColor` (optional)| `number` | 1: Set card's colors randomly &  automatically  <br> 2: Set card's colors manually |
+| `isRandomColor` (optional)| `number` | 1: Set card's colors randomly &  automatically.  <br> 2: Set card's colors manually. |
 
 
 ## NativeBaguette 🥖
