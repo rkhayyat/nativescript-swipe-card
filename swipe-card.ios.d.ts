@@ -16,8 +16,8 @@ export declare class SwipeCard extends SwipeCardBase {
     cardWidth: Number;
     cardBorderRadius: Number;
     cardBorderWidth: Number;
-    isRandomColor: Boolean;
+    isRandomColor: Number;
     constructor();
     createItems(items: any, layoutHeight: any, layoutWidth: any, layoutBorderRadius: any, layoutBorderWidth: any, isRandomColor: any): void;
-    handleSwipe(key: any, layout: Layout, layoutHeight: number, layoutWidth: number, layoutBorderRadius: number, layoutBorderWidth: number, isRandomColor: Boolean): void;
+    handleSwipe(key: any, layout: Layout, layoutHeight: number, layoutWidth: number, layoutBorderRadius: number, layoutBorderWidth: number, isRandomColor: number): void;
 }

@@ -1,6 +1,6 @@
 {
   "name": "nativescript-swipe-card",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "swipcard plugin for nativescript",
   "main": "swipe-card",
   "typings": "index.d.ts",
