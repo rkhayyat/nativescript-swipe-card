@@ -165,7 +165,7 @@ export class helloworldComponent {
 
   public stackCards:Array<Layout>=[];
   
-  constructor() {
+  constructor(swipeEvent: SwipeEvent) {
     let Grid = new GridLayout();
     let Label1 = new Label();
     let Label2 = new Label();
