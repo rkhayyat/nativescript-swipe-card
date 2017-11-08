@@ -148,6 +148,8 @@ https://github.com/jlooper/fetching-app-vanilla
 ```
 ### Component
 ```typescript
+elementRegistryModule.registerElement("SwipeCard", () => require("nativescript-swipe-card").SwipeCard);
+import {SwipeEvent} from 'nativescript-swipe-card';
 import {Layout} from "tns-core-modules/ui/layouts/layout";
 import {StackLayout} from "tns-core-modules/ui/layouts/stack-layout";
 import {GridLayout, ItemSpec} from "tns-core-modules/ui/layouts/grid-layout";
@@ -155,8 +157,7 @@ import {Label} from "tns-core-modules/ui/label";
 import {Image} from "tns-core-modules/ui/image";
 import {Button} from "tns-core-modules/ui/button";
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
-elementRegistryModule.registerElement("SwipeCard", () => require("nativescript-swipe-card").SwipeCard);
-import {SwipeEvent} from 'nativescript-swipe-card';
+
 @Component({
     moduleId: module.id,
     templateUrl: "helloworld.html"
